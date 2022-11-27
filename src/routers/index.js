@@ -6,6 +6,7 @@ import My from '../pages/my'
 import Discover from '../pages/discover'
 import Friends from '../pages/friends'
 import Download from '../pages/download'
+import Toplist from '../components/toplist'
 
 
 
@@ -13,6 +14,7 @@ export const config = [
     {
         path: "/",
         element: <Root />,
+
         children: [
             {
                 index: true,
@@ -21,6 +23,12 @@ export const config = [
             {
                 path: "discover",
                 element: <Discover />,
+                children: [
+                    {
+                        path: "toplist",
+                        element:<Toplist/>
+                    }
+                ]
             },
             {
                 path: "my",
@@ -36,6 +44,7 @@ export const config = [
             }
         ]
     }
+
 ]
 
 const router = createBrowserRouter(config)
