@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom"
 
 import Root from '../pages/root'
 import My from '../pages/my'
-import Discover from '../pages/discover'
+import Discover,{loader as discoverLoader} from '../pages/discover'
 import Friends from '../pages/friends'
 import Download from '../pages/download'
 import Toplist from '../pages/discover/c-pages/toplist'
@@ -23,11 +23,13 @@ export const config = [
         children: [
             {
                 index: true,
-                element: <Discover />
+                element: <Discover />,
+                loader:discoverLoader,
             },
             {
                 path: "discover",
                 element: <Discover />,
+                loader:discoverLoader,
                 children: [
                     {
                         path: "toplist",

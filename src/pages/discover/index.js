@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
+import request from '../../services/axios'
 import { discoverLinks } from '../../common/local-data'
 import {
   DiscoverWrapper,
@@ -16,7 +17,10 @@ const Discover = memo(() => {
           <div className='item'>
             {
               discoverLinks.map(e =>
-                <NavLink to={`/discover/${e.link}`}>
+                <NavLink
+                  to={`/discover/${e.link}`}
+                  key={e.title}
+                >
                   {e.title}
                 </NavLink>)
             }
@@ -30,5 +34,13 @@ const Discover = memo(() => {
 
   )
 })
+
+export const loader = async () => {
+  const data = await request({
+      url:"/banner"
+  })
+  
+  console.log(data)
+}
 
 export default Discover
