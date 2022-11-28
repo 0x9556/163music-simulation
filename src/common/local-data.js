@@ -20,7 +20,7 @@ export const headerLinks = [
 export const discoverLinks = [
     {
         title: "Recommend",
-        link:"/"
+        link:""
     },
     {
         title: "Toplist",

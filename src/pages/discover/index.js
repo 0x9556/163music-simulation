@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import { discoverLinks } from '../../common/local-data'
 import {
   DiscoverWrapper,
@@ -24,6 +24,8 @@ const Discover = memo(() => {
         </TopMenu>
         
       </div>
+
+      <Outlet/>
     </DiscoverWrapper>
 
   )
