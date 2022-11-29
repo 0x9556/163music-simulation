@@ -1,17 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    banner: []
+    banners: []
 }
 
 const url = "http://123.207.32.32:9001/banner"
 //action
 export const getData = createAsyncThunk(
-    "discover/getData",
+    "discover/getBannerData",
     async () => {
         const resp = await fetch(url)
-        const data = await resp.json()
-        return data
+        const {banners} = await resp.json()
+        return banners
     }
 )
 
@@ -21,7 +21,8 @@ const discoverSlice = createSlice({
     initialState,
     extraReducers: builder => {
         builder.addCase(getData.fulfilled, (state, action) => {
-            state.banner = action.payload
+            state.banners = action.payload
+            console.log(state.banners)
         })
     }
 

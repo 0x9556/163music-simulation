@@ -10,16 +10,13 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const Discover = memo(() => {
 
-  const { banner } = useSelector(state => state.discover)
+  const discoverState = useSelector(state => state.discover)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getData())
-    setTimeout(() => {
-      console.log(banner)
-    }, 5000);
-
-  }, [])
+    
+  },[])
 
   return (
 
