@@ -1,13 +1,26 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-import request from '../../services/axios'
 import { discoverLinks } from '../../common/local-data'
-import {
-  DiscoverWrapper,
-  TopMenu
-} from './style'
+import { DiscoverWrapper, TopMenu } from './style'
+import { getData } from './discoverSlice'
+import { useDispatch, useSelector } from 'react-redux'
+
+
+
 
 const Discover = memo(() => {
+
+  const { banner } = useSelector(state => state.discover)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getData())
+    setTimeout(() => {
+      console.log(banner)
+    }, 5000);
+
+  }, [])
+
   return (
 
     <DiscoverWrapper>
@@ -26,21 +39,18 @@ const Discover = memo(() => {
             }
           </div>
         </TopMenu>
-        
+
       </div>
 
-      <Outlet/>
+      <Outlet />
     </DiscoverWrapper>
 
   )
 })
 
 export const loader = async () => {
-  const data = await request({
-      url:"/banner"
-  })
-  
-  console.log(data)
+
+
 }
 
 export default Discover
