@@ -2,21 +2,23 @@ import React, { memo, useEffect } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { discoverLinks } from '../../common/local-data'
 import { DiscoverWrapper, TopMenu } from './style'
-import { getData } from './discoverSlice'
-import { useDispatch, useSelector } from 'react-redux'
+import { getTopBannerAction } from './store/discoverSlice'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 
 
 
 const Discover = memo(() => {
 
-  const discoverState = useSelector(state => state.discover)
+  const { banners } = useSelector(state => state.discover,shallowEqual)
   const dispatch = useDispatch()
+  
 
   useEffect(() => {
-    dispatch(getData())
-    
-  },[])
+
+    dispatch(getTopBannerAction())
+
+  }, [dispatch])
 
   return (
 

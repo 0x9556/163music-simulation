@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import discoverReducer from '../pages/discover/discoverSlice'
+
+import cReducer from '../pages/discover/store'
 
 const store = configureStore({
    reducer: {
-      discover: discoverReducer
+      ...cReducer
    }
 })
 
