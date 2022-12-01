@@ -16,7 +16,7 @@ const AppHeader = memo(() => {
                 <div className='content wrap-v1'>
 
                     <HeaderWrapperLeft>
-                        <a className="logo sprite_01" href="#/">网易云音乐</a>
+                        <a className="logo sprite_01" href="/">网易云音乐</a>
                         <div className='select-list'>
                             {
                                 headerLinks.map(e => {

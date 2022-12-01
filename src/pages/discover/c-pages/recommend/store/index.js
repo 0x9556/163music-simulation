@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getTopBanners } from '../../../services/discover'
+import { getTopBanners } from '../../../../../services/discover'
 
 
 const initialState = {
@@ -8,14 +8,14 @@ const initialState = {
 
 //action
 export const getTopBannerAction = createAsyncThunk(
-    "discover/getBannerData",
+    "recommend/getBannerData",
     () => {
         return getTopBanners()
     }
 )
 
 const discoverSlice = createSlice({
-    name: "discover",
+    name: "recommend",
     initialState,
     extraReducers: builder => {
         builder.addCase(getTopBannerAction.fulfilled, (state, action) => {

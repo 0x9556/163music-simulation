@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom"
 
 import Root from '../pages/root'
 import My from '../pages/my'
-import Discover,{loader as discoverLoader} from '../pages/discover'
+import Discover from '../pages/discover'
 import Friends from '../pages/friends'
 import Download from '../pages/download'
 import Toplist from '../pages/discover/c-pages/toplist'
@@ -11,6 +11,7 @@ import Playlist from '../pages/discover/c-pages/playlist'
 import Djradio from '../pages/discover/c-pages/djradio'
 import Artist from '../pages/discover/c-pages/artist'
 import Album from '../pages/discover/c-pages/album'
+import Reccomend from '../pages/discover/c-pages/recommend'
 
 
 
@@ -19,41 +20,44 @@ export const config = [
     {
         path: "/",
         element: <Root />,
-
         children: [
             {
                 index: true,
                 element: <Discover />,
-                loader:discoverLoader,
+
             },
             {
                 path: "discover",
                 element: <Discover />,
-                loader:discoverLoader,
+
                 children: [
                     {
+                        index: true,
+                        element: <Reccomend />
+                    },
+                    {
                         path: "toplist",
-                        element:<Toplist/>
+                        element: <Toplist />
                     },
                     {
                         path: "playlist",
-                        element:<Playlist/>
+                        element: <Playlist />
                     },
                     {
                         path: "djradio",
-                        element:<Djradio/>
+                        element: <Djradio />
                     },
                     {
                         path: "artist",
-                        element:<Artist/>
+                        element: <Artist />
                     },
                     {
                         path: "toplist",
-                        element:<Toplist/>
+                        element: <Toplist />
                     },
                     {
                         path: "album",
-                        element:<Album/>
+                        element: <Album />
                     },
 
 

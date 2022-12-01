@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
+import reducer from './reducer'
 
-import cReducer from '../pages/discover/store'
 
-const store = configureStore({
-   reducer: {
-      ...cReducer
-   }
+
+export default configureStore({
+   reducer,
+   
 })
-
-export default store
