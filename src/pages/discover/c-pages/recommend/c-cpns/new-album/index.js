@@ -29,7 +29,7 @@ const NewAlbum = memo(() => {
                             [0, 1].map(page =>
                                 <div key={page} className='page'>
                                     {
-                                        newAlbums.slice(page*5).map(item =>
+                                        newAlbums.slice(page * 5, (page + 1) * 5).map(item =>
                                             <div key={item.id} >
                                                 <ThemeCover info={item} />
                                             </div>
