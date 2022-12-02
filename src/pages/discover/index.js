@@ -4,10 +4,6 @@ import { discoverLinks } from '../../common/local-data'
 import { DiscoverWrapper, TopMenu } from './style'
 
 
-
-
-
-
 const Discover = memo(() => {
 
 

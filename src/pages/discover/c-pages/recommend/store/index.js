@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getTopBanners } from '../../../../../services/discover'
+import { getTopBanners, getHotRecommend, getNewAlbums } from '../../../../../services/recommend'
 
 
 const initialState = {
-    banners: []
+    banners: [],
+    hotRecommend: [],
+    newAlbums: []
 }
 
 //action
@@ -14,13 +16,37 @@ export const getTopBannerAction = createAsyncThunk(
     }
 )
 
+export const getHotRecommendAction = createAsyncThunk(
+    "recommend/getHotRecommend",
+    () => {
+        return getHotRecommend()
+    }
+)
+
+export const getNewAlbumsAction = createAsyncThunk(
+    "recommend/getNewAlbums",
+    () => {
+        return getNewAlbums()
+    }
+)
+
 const discoverSlice = createSlice({
     name: "recommend",
     initialState,
     extraReducers: builder => {
         builder.addCase(getTopBannerAction.fulfilled, (state, action) => {
             state.banners = action.payload
-            console.log(state.banners)
+            // console.log(state.banners)
+        })
+
+        builder.addCase(getHotRecommendAction.fulfilled, (state, action) => {
+            state.hotRecommend = action.payload
+
+        })
+
+        builder.addCase(getNewAlbumsAction.fulfilled, (state, action) => {
+            state.newAlbums = action.payload
+            console.log(state.newAlbums)
         })
     }
 })

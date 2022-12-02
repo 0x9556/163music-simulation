@@ -9,7 +9,7 @@ const TopBanner = memo(() => {
 
     const [currentIndex, setCurrentIndex] = useState(0)
 
-    const { banners } = useSelector(state => state.discover, shallowEqual)
+    const { banners } = useSelector(state => state.recommend, shallowEqual)
     const dispatch = useDispatch()
 
     useEffect(() => {
