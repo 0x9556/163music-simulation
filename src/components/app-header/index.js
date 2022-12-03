@@ -6,7 +6,7 @@ import {
     HeaderWrapperRight
 } from './style'
 import { headerLinks } from '../../common/local-data'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet ,Link} from 'react-router-dom'
 import { Input } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 const AppHeader = memo(() => {
@@ -16,7 +16,7 @@ const AppHeader = memo(() => {
                 <div className='content wrap-v1'>
 
                     <HeaderWrapperLeft>
-                        <a className="logo sprite_01" href="/">网易云音乐</a>
+                        <Link className="logo sprite_01" to="/">网易云音乐</Link>
                         <div className='select-list'>
                             {
                                 headerLinks.map(e => {

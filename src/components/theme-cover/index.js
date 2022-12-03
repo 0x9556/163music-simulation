@@ -1,12 +1,11 @@
 import React, { memo } from 'react'
-import {formatCount,formatImageSize} from '../../utils/format'
+import { formatCount, formatImageSize } from '../../utils/format'
 import { ThemeCoverWrapper } from './style'
 
 const ThemeCover = memo((props) => {
 
     const { info } = props
-
-
+    
     return (
         <ThemeCoverWrapper>
             <div className='cover-top'>

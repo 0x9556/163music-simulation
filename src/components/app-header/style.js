@@ -87,6 +87,7 @@ export const HeaderWrapperRight = styled.div`
     width: 158px;
     height: 32px;
     border-radius: 16px;
+    margin-right: 90px;
 
     input {
       &::placeholder {

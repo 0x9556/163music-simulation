@@ -55,6 +55,7 @@ export const ThemeCoverWrapper = styled.div`
     font-size: 14px;
     color: #000;
     margin-top: 5px;
+   
   }
 
   .cover-source {

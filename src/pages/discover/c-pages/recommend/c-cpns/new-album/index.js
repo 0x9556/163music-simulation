@@ -1,11 +1,11 @@
-import React, { memo } from 'react'
+import React, { memo, useRef } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Carousel } from 'antd'
 import { getNewAlbumsAction } from '../../store'
 
 import ThemeHeaderRCM from '../../../../../../components/theme-header-rcm'
-import ThemeCover from '../../../../../../components/theme-cover'
+import AlbumCover from '../../../../../../components/album-cover'
 import { AlbumWrapper } from './style'
 
 const NewAlbum = memo(() => {
@@ -17,21 +17,22 @@ const NewAlbum = memo(() => {
         dispatch(getNewAlbumsAction())
     }, [dispatch])
 
+    const carouselRef = useRef()
     return (
         <AlbumWrapper>
 
             <ThemeHeaderRCM title="New-Album" />
             <div className='content'>
-                <button className='arrow arrow-left sprite_02'></button>
+                <button className='arrow arrow-left sprite_02' onClick={()=>carouselRef.current.prev()}></button>
                 <div className='album'>
-                    <Carousel >
+                    <Carousel ref={carouselRef}>
                         {
                             [0, 1].map(page =>
                                 <div key={page} className='page'>
                                     {
-                                        newAlbums.slice(page * 5, (page + 1) * 5).map(item =>
+                                        newAlbums.slice(page * 5).map(item =>
                                             <div key={item.id} >
-                                                <ThemeCover info={item} />
+                                                <AlbumCover info={item}  />
                                             </div>
                                         )
                                     }
@@ -42,7 +43,7 @@ const NewAlbum = memo(() => {
                     </Carousel>
                 </div>
 
-                <button className='arrow arrow-right sprite_02'></button>
+                <button className='arrow arrow-right sprite_02' onClick={()=>carouselRef.current.next()}></button>
             </div>
 
         </AlbumWrapper>

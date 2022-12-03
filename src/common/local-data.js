@@ -12,6 +12,14 @@ export const headerLinks = [
         link:"friends"
     },
     {
+        title: "Store",
+        link:"store"
+    },
+    {
+        title: "Artist",
+        link:"artist"
+    },
+    {
         title: "Download",
         link:"download"
     }

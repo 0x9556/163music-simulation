@@ -4,7 +4,7 @@ import ThemeHeaderRCM from '../../../../../../components/theme-header-rcm'
 const Ranking = memo(() => {
     return (
         <>
-        <ThemeHeaderRCM />
+        <ThemeHeaderRCM title="Ranking"/>
         </>
     )
 })

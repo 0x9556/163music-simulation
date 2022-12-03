@@ -8,6 +8,6 @@ export function formatCount(num) {
     }
 }
 
-export function formatImageSize(imgUrl, size) {
+export function formatImageSize(imgUrl,size) {
     return `${imgUrl}?param=${size}x${size}`
 }
