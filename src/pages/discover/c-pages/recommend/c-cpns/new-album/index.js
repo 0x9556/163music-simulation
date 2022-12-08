@@ -23,16 +23,16 @@ const NewAlbum = memo(() => {
 
             <ThemeHeaderRCM title="New-Album" />
             <div className='content'>
-                <button className='arrow arrow-left sprite_02' onClick={()=>carouselRef.current.prev()}></button>
+                <button className='arrow arrow-left sprite_02' onClick={() => carouselRef.current.prev()}></button>
                 <div className='album'>
                     <Carousel ref={carouselRef}>
                         {
                             [0, 1].map(page =>
                                 <div key={page} className='page'>
                                     {
-                                        newAlbums.slice(page * 5).map(item =>
+                                        newAlbums.slice(page * 5,(page+1)*5).map(item =>
                                             <div key={item.id} >
-                                                <AlbumCover info={item}  />
+                                                <AlbumCover info={item} size={100} width={118} bgp={"-570px"} />
                                             </div>
                                         )
                                     }
@@ -43,7 +43,7 @@ const NewAlbum = memo(() => {
                     </Carousel>
                 </div>
 
-                <button className='arrow arrow-right sprite_02' onClick={()=>carouselRef.current.next()}></button>
+                <button className='arrow arrow-right sprite_02' onClick={() => carouselRef.current.next()}></button>
             </div>
 
         </AlbumWrapper>

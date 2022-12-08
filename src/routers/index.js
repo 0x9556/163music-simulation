@@ -24,7 +24,6 @@ export const config = [
             {
                 index: true,
                 element: <Discover />,
-
             },
             {
                 path: "discover",

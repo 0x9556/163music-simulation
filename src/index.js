@@ -10,9 +10,9 @@ import './assets/css/reset.css'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
+
+    <RouterProvider router={router} />
+
   </Provider>
 
 );

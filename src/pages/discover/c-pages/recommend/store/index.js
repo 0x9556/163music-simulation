@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getTopBanners, getHotRecommend, getNewAlbums } from '../../../../../services/recommend'
+import { getTopBanners, getHotRecommend, getNewAlbums, getToplist } from '../../../../../services/recommend'
 
 
 const initialState = {
     banners: [],
     hotRecommend: [],
-    newAlbums: []
+    newAlbums: [],
+    toplist: {}
 }
 
 //action
@@ -30,6 +31,13 @@ export const getNewAlbumsAction = createAsyncThunk(
     }
 )
 
+export const getToplistAction = createAsyncThunk(
+    "recommend/getToplist",
+    (id) => {
+        return getToplist(id)
+    }
+)
+
 const discoverSlice = createSlice({
     name: "recommend",
     initialState,
@@ -45,8 +53,13 @@ const discoverSlice = createSlice({
         })
 
         builder.addCase(getNewAlbumsAction.fulfilled, (state, action) => {
+            // console.log(action.payload)
             state.newAlbums = action.payload
-            console.log(state.newAlbums)
+        })
+
+        builder.addCase(getToplistAction.fulfilled, (state, action) => {
+            const id = action.meta.arg
+            state.toplist[id] = action.payload
         })
     }
 })

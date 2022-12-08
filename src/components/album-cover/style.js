@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 export const AlbumWrapper = styled.div`
+   width: ${props => props.width + "px"};
+ 
   .album-image {
     position: relative;
-    width: ${props => props.width};
-    height: ${props => props.size};
+    width: ${props => props.width + "px"};
+    height: ${props => props.size + "px"};
     overflow: hidden;
     margin-top: 15px;
 
@@ -22,7 +24,7 @@ export const AlbumWrapper = styled.div`
       background-position: 0 ${props => props.bgp};
       text-indent: -9999px;
     }
-  }
+  } 
 
   .album-info {
     font-size: 12px;

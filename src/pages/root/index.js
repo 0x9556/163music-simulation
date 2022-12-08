@@ -1,20 +1,20 @@
-import React, { memo } from 'react'
+import React from 'react'
 import AppHeader from '../../components/app-header'
 import AppFooter from '../../components/app-footer'
+import PlayerBar from '../../pages/player/app-player-bar'
 
 
 
 
-
-const Root = memo(() => {
+const Root = () => {
     return (
         <div>
             <AppHeader />
-
-            <AppFooter/>
+            <AppFooter />
+            <PlayerBar/>
         </div>
     )
-})
+}
 
 
 

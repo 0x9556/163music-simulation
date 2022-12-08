@@ -1,12 +1,10 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { discoverLinks } from '../../common/local-data'
 import { DiscoverWrapper, TopMenu } from './style'
 
 
-const Discover = memo(() => {
-
-
+const Discover = () => {
 
   return (
 
@@ -35,8 +33,7 @@ const Discover = memo(() => {
     </DiscoverWrapper>
 
   )
-})
-
+}
 
 
 export default Discover
