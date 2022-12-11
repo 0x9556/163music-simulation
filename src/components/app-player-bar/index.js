@@ -63,11 +63,8 @@ const PlayerBar = memo(() => {
         audioRef.current.currentTime = currentTime  //delay
         setCurrentTime(currentTime * 1000)
         setChangingStatus(false)
-
     }
-
     return (
-
         <PlaybarWrapper className='sprite_playbar'>
             <div className='content wrap-v2'>
                 <Control isPlaying={isPlaying}>

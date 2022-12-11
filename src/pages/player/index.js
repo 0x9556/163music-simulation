@@ -7,6 +7,7 @@ export default function Player() {
   const lyricContent = currentSong.lyric.contentArr
 
   return (
+    lyricContent &&
     <h2>{lyricContent[lyricIndex]}</h2>
   )
 }
