@@ -2,16 +2,17 @@ import React from 'react'
 import { createBrowserRouter } from "react-router-dom"
 
 import Root from '../pages/root'
-import My from '../pages/my'
 import Discover from '../pages/discover'
-import Friends from '../pages/friends'
-import Download from '../pages/download'
+import Reccomend from '../pages/discover/c-pages/recommend'
 import Toplist from '../pages/discover/c-pages/toplist'
 import Playlist from '../pages/discover/c-pages/playlist'
 import Djradio from '../pages/discover/c-pages/djradio'
 import Artist from '../pages/discover/c-pages/artist'
 import Album from '../pages/discover/c-pages/album'
-import Reccomend from '../pages/discover/c-pages/recommend'
+import My from '../pages/my'
+import Friends from '../pages/friends'
+import Download from '../pages/download'
+import Player from '../pages/player'
 
 
 
@@ -73,6 +74,10 @@ export const config = [
             {
                 path: "download",
                 element: <Download />
+            },
+            {
+                path: "song/:id",
+                element:<Player/>
             }
         ]
     }

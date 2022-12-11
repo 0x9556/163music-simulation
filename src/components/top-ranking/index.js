@@ -2,16 +2,19 @@ import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 import { formatImageSize } from '../../utils/format'
 import { TopRankingWrapper } from './style'
+import { playSongAction,addPlaylistAction} from '../../store/actionCreators'
+import { useDispatch } from 'react-redux'
+
 
 const TopRanking = memo((props) => {
 
     const { info } = props
+    
+    const dispatch = useDispatch()
 
     return (
         info &&
-
         <TopRankingWrapper>
-
             <div className='header'>
                 <div className='image'>
                     <img src={formatImageSize(info.coverImgUrl, 100)} alt="" />
@@ -27,7 +30,6 @@ const TopRanking = memo((props) => {
 
                 </div>
             </div>
-
             <div className='list'>
                 {
                     info.tracks.slice(0, 10).map((item, index) =>
@@ -36,8 +38,14 @@ const TopRanking = memo((props) => {
                             <div className='info'>
                                 <Link className='name text-nowrap'>{item.name}</Link>
                                 <div className='operate'>
-                                    <button className='btn sprite_02 play'></button>
-                                    <button className='btn sprite_icon2 addto'></button>
+                                    <button
+                                        className='btn sprite_02 play'
+                                        onClick={() => { dispatch(playSongAction(item.id)) }}
+                                    ></button>
+                                    <button
+                                        className='btn sprite_icon2 addto'
+                                        onClick={()=>{dispatch(addPlaylistAction(item.id))}}
+                                    ></button>
                                     <button className='btn sprite_02 favor'></button>
                                 </div>
                             </div>
@@ -45,11 +53,11 @@ const TopRanking = memo((props) => {
                     )
                 }
             </div>
-
             <div className='footer'>
                 <Link to={""}>{"More>"}</Link>
             </div>
         </TopRankingWrapper>
+
     )
 })
 

@@ -1,7 +1,9 @@
 
 import { combineReducers } from '@reduxjs/toolkit'
-import RecommendReducer from '../pages/discover/c-pages/recommend/store'
+import recommendReducer from '../pages/discover/c-pages/recommend/store'
+import playerReducer from '../pages/player/store'
 
 export default combineReducers({
-    recommend: RecommendReducer
+    recommend: recommendReducer,
+    player: playerReducer
 })
