@@ -1,7 +1,7 @@
 import React from 'react'
 import { createBrowserRouter } from "react-router-dom"
-
 import Root from '../pages/root'
+import Home from '../pages/home'
 import Discover from '../pages/discover'
 import Reccomend from '../pages/discover/c-pages/recommend'
 import Toplist from '../pages/discover/c-pages/toplist'
@@ -15,8 +15,6 @@ import Download from '../pages/download'
 import Player from '../pages/player'
 
 
-
-
 export const config = [
     {
         path: "/",
@@ -24,12 +22,11 @@ export const config = [
         children: [
             {
                 index: true,
-                element: <Discover />,
+                element: <Home />,
             },
             {
                 path: "discover",
                 element: <Discover />,
-
                 children: [
                     {
                         index: true,
@@ -59,8 +56,6 @@ export const config = [
                         path: "album",
                         element: <Album />
                     },
-
-
                 ]
             },
             {
@@ -77,15 +72,13 @@ export const config = [
             },
             {
                 path: "song/:id",
-                element:<Player/>
+                element: <Player />
             }
         ]
     }
-
 ]
 
 const router = createBrowserRouter(config)
-
 
 
 export default router

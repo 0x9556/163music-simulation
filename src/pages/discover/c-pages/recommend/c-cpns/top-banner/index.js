@@ -6,7 +6,6 @@ import { BannerWrapper, BannerLeft, BannerRight, BannerControl } from './style'
 
 
 const TopBanner = memo(() => {
-
     const { banners } = useSelector(state => state.recommend, shallowEqual)
     const dispatch = useDispatch()
     const [currentIndex, setCurrentIndex] = useState(0)

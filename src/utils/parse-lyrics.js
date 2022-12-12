@@ -1,5 +1,3 @@
-
-
 export function parseLyrics(lyricString) {
     if (lyricString) {
         const lineStrings = lyricString.split("\n")
