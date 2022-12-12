@@ -31,3 +31,11 @@ export const getToplist = async (id) => {
     const { playlist } = await resp.json()
     return playlist
 }
+
+export const getArtist = async (cat, limit) => {
+    const url = `${BASE_URL}/artist/list?cat=${cat}&limit=${limit}`
+    const resp = await fetch(url)
+    const { artists } = await resp.json()
+    return artists
+
+}

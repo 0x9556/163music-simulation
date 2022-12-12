@@ -1,39 +1,11 @@
 import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
-import { discoverLinks } from '../../common/local-data'
-import { DiscoverWrapper, TopMenu } from './style'
-
-
-const Discover = () => {
-
-  return (
-
-    <DiscoverWrapper>
-      <div className="top">
-
-        <TopMenu className='wrap-v1'>
-          <div className='item'>
-            {
-              discoverLinks.map(e =>
-                <NavLink
-                  to={`/discover/${e.link}`}
-                  key={e.title}
-                >
-                  {e.title}
-                </NavLink>)
-            }
-          </div>
-        </TopMenu>
-
-      </div>
-
-      <Outlet />
-
-
-    </DiscoverWrapper>
-
-  )
+import { Outlet } from 'react-router-dom'
+import DiscoverHeader from '../../components/discover-header'
+export default function Discover() {
+    return (
+        <>
+            <DiscoverHeader />
+            <Outlet />
+        </>
+    )
 }
-
-
-export default Discover

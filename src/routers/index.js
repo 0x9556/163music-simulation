@@ -71,7 +71,7 @@ export const config = [
                 element: <Download />
             },
             {
-                path: "song/:id",
+                path: "song/",
                 element: <Player />
             }
         ]

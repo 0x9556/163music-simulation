@@ -23,8 +23,8 @@ const Reccomend = () => {
 
         <RecommendRight>
           <UserLogin />
-          <HotAnchor />
           <SettleSinger />
+          <HotAnchor />
         </RecommendRight>
 
       </Content>

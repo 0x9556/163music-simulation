@@ -82,7 +82,7 @@ const PlayerBar = memo(() => {
                     ></button>
                 </Control>
                 <PlayInfo>
-                    <Link className='image' to={`song/${id}`}>
+                    <Link className='image' to={`song?id=${id}`}>
                         <img src={formatImageSize(pic, 34)} alt="" />
                     </Link>
                     <div className='info'>

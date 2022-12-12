@@ -23,7 +23,7 @@ export const HeaderWrapperLeft = styled.div`
 
   .logo {
     display: block;
-    width: 176px;
+    width: 180px;
     height: 70px;
     background-position: 0 0;
     text-indent: -9999px;
