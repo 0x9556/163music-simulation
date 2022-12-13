@@ -34,7 +34,7 @@ export const ThemeCoverWrapper = styled.div`
         height: 27px;
 
         .erji {
-          margin-right: 5px;
+          /* margin: 9px 5px 9px 10px; */
           display: inline-block;
           width: 14px;
           height: 11px;

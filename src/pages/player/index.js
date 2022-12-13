@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
-import { showTargetSongInfoAction, changeTargetSong } from './store'
+import { showTargetSongInfoAction } from './store'
+import { formatImageSize } from '../../utils/format'
 import DiscoverHeader from '../../components/discover-header'
 import { PlayerWrapper, PlayerLeft, PlayerRight, Content } from './style'
 
@@ -15,12 +16,10 @@ export default function Player() {
   useEffect(() => {
     if (currentId !== currentSong.id) {
       dispatch(showTargetSongInfoAction(currentId))
-    } else {
-      dispatch(changeTargetSong(currentSong))
     }
-
   }, [currentId, currentSong, dispatch])
 
+  const albumPicUrl = formatImageSize(targetSong.album.picUrl, 130)
   const lyricContent = targetSong.lyric ? targetSong.lyric.contentArr : ""
 
   return (
@@ -28,10 +27,31 @@ export default function Player() {
     <PlayerWrapper >
       <DiscoverHeader />
       <Content className='wrap-v2'>
-        <PlayerLeft>
+
+        <PlayerLeft >
+          <div className='image_cover'>
+            <img src={albumPicUrl} alt="" />
+          </div>
+
+          <div className='content'>
+            <div className='top'>
+              <div className='title'>
+                <div></div>
+                <div></div>
+              </div>
+              <span className='singer'></span>
+              <span className='album'></span>
+              <span className='btn'></span>
+            </div>
+            <div className='lyric'>
+
+            </div>
+          </div>
 
         </PlayerLeft>
+
         <PlayerRight></PlayerRight>
+
       </Content>
     </PlayerWrapper>
   )

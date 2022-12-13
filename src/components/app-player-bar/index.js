@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Slider } from 'antd'
@@ -7,7 +7,7 @@ import { formatImageSize, formatTime, getPlaySongUrl } from '../../utils/format'
 import { PlaybarWrapper, Control, PlayInfo, Operator } from './style'
 
 
-const PlayerBar = memo(() => {
+const PlayerBar = () => {
     const { currentSong, sequence, playList, lyricIndex } = useSelector(state => state.player, shallowEqual)
     const dispatch = useDispatch()
     const [currentTime, setCurrentTime] = useState(0)
@@ -88,7 +88,7 @@ const PlayerBar = memo(() => {
                     <div className='info'>
                         <div className='song'>
                             <span>{name}</span>
-                            <span className='singer-name'>{artist.map(item=>item.name)}</span>
+                            <span className='singer-name'>{artist.map(item => item.name)}</span>
                         </div>
                         <div className='progress'>
                             <Slider
@@ -125,6 +125,6 @@ const PlayerBar = memo(() => {
             />
         </PlaybarWrapper>
     )
-})
+}
 
 export default PlayerBar

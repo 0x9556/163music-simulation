@@ -12,8 +12,8 @@ const getSongInfo = async (id) => {
         id: info.id,
         duration: info.dt,
         artist: info.ar,
-        alia:info.alia,
-        album:info.al,
+        alia: info.alia,
+        album: info.al,
         pic: info.al.picUrl,
     }
 }
@@ -25,11 +25,11 @@ const initialState = {
         id: 0,
         duration: 0,
         artist: [],
-        alia:[],
-        album:{},
+        alia: [],
+        album: {},
         pic: null,
     },
-    targetSong:{},
+    targetSong: {},
     playList: [],
     currentSongIndex: 0,
     lyricIndex: 0,
@@ -76,8 +76,10 @@ const showTargetSongInfoAction = createAsyncThunk(
         if (songIndex === -1) {
             const song = await getSongInfo(id)
             dispatch(changeTargetSong(song))
+        } else {
+            dispatch(changeTargetSong(playList[songIndex]))
         }
-        
+
     }
 )
 
@@ -139,5 +141,5 @@ const playerSlice = createSlice({
 })
 
 export default playerSlice.reducer
-export const { addToPlaylist, changeCurrentSongIndex, changeSequence, changeCurrentSong, changeTargetSong,changeLyricIndex } = playerSlice.actions
-export { playSongAction, switchSongAction, addPlaylistAction ,showTargetSongInfoAction}
+export const { addToPlaylist, changeCurrentSongIndex, changeSequence, changeCurrentSong, changeTargetSong, changeLyricIndex } = playerSlice.actions
+export { playSongAction, switchSongAction, addPlaylistAction, showTargetSongInfoAction }
