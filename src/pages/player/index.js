@@ -1,15 +1,38 @@
-import React from 'react'
-import { shallowEqual, useSelector } from 'react-redux'
-import { useHref, useMatch, useParams, useResolvedPath,useSearchParams } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
+import { showTargetSongInfoAction, changeTargetSong } from './store'
+import DiscoverHeader from '../../components/discover-header'
+import { PlayerWrapper, PlayerLeft, PlayerRight, Content } from './style'
 
 export default function Player() {
 
-  const { currentSong, lyricIndex } = useSelector(state => state.player, shallowEqual)
-  const lyricContent = currentSong.lyric.contentArr
-  const [id,setid] =  useSearchParams()
-  console.log(id)
+  const { currentSong, targetSong, lyricIndex } = useSelector(state => state.player, shallowEqual)
+  const dispatch = useDispatch()
+  const [params] = useSearchParams()
+  const currentId = params.get("id")
+
+  useEffect(() => {
+    if (currentId !== currentSong.id) {
+      dispatch(showTargetSongInfoAction(currentId))
+    } else {
+      dispatch(changeTargetSong(currentSong))
+    }
+
+  }, [currentId, currentSong, dispatch])
+
+  const lyricContent = targetSong.lyric ? targetSong.lyric.contentArr : ""
+
   return (
-    lyricContent &&
-    <h2>{lyricContent[lyricIndex]}</h2>
+
+    <PlayerWrapper >
+      <DiscoverHeader />
+      <Content className='wrap-v2'>
+        <PlayerLeft>
+
+        </PlayerLeft>
+        <PlayerRight></PlayerRight>
+      </Content>
+    </PlayerWrapper>
   )
 }

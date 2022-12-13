@@ -7,24 +7,29 @@ const getSongInfo = async (id) => {
     const lyric = (parseLyrics(await getLyrics(id)) || "")
     if (!info) return
     return {
-        id: info.id,
         name: info.name,
-        artist: (info.ar)[0].name,
+        lyric: lyric,
+        id: info.id,
         duration: info.dt,
+        artist: info.ar,
+        alia:info.alia,
+        album:info.al,
         pic: info.al.picUrl,
-        lyric: lyric
     }
 }
 
 const initialState = {
     currentSong: {
-        id: 0,
         name: "",
-        artist: "",
-        pic: null,
+        lyric: "",
+        id: 0,
         duration: 0,
-        lyric: ""
+        artist: [],
+        alia:[],
+        album:{},
+        pic: null,
     },
+    targetSong:{},
     playList: [],
     currentSongIndex: 0,
     lyricIndex: 0,
@@ -62,6 +67,20 @@ const addPlaylistAction = createAsyncThunk(
     }
 )
 
+const showTargetSongInfoAction = createAsyncThunk(
+    "player/showTargetSongInfoAction",
+    async (id, api) => {
+        const dispatch = api.dispatch
+        const { playList } = api.getState().player
+        const songIndex = playList.findIndex(song => song.id === id)
+        if (songIndex === -1) {
+            const song = await getSongInfo(id)
+            dispatch(changeTargetSong(song))
+        }
+        
+    }
+)
+
 const switchSongAction = createAsyncThunk(
     "player/changeCurrentSong",
     (tag, api) => {
@@ -96,6 +115,9 @@ const playerSlice = createSlice({
         changeCurrentSong: (state, action) => {
             state.currentSong = action.payload
         },
+        changeTargetSong: (state, action) => {
+            state.targetSong = action.payload
+        },
         addToPlaylist: (state, action) => {
             state.playList.push(action.payload)
         },
@@ -117,5 +139,5 @@ const playerSlice = createSlice({
 })
 
 export default playerSlice.reducer
-export const { addToPlaylist, changeCurrentSongIndex, changeSequence, changeCurrentSong, changeLyricIndex } = playerSlice.actions
-export { playSongAction, switchSongAction, addPlaylistAction }
+export const { addToPlaylist, changeCurrentSongIndex, changeSequence, changeCurrentSong, changeTargetSong,changeLyricIndex } = playerSlice.actions
+export { playSongAction, switchSongAction, addPlaylistAction ,showTargetSongInfoAction}

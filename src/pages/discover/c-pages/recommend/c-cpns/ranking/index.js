@@ -25,9 +25,9 @@ const Ranking = memo(() => {
             <ThemeHeaderRCM title="Ranking" />
 
             <div className='top'>
-                <TopRanking info={toplist[UP]} />
-                <TopRanking info={toplist[NEW]} />
-                <TopRanking info={toplist[ORIGIN]} />
+                <TopRanking info={toplist[0]} />
+                <TopRanking info={toplist[1]} />
+                <TopRanking info={toplist[2]} />
             </div>
 
         </RankingWrapper>

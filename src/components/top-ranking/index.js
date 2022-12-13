@@ -2,14 +2,13 @@ import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 import { formatImageSize } from '../../utils/format'
 import { TopRankingWrapper } from './style'
-import { playSongAction,addPlaylistAction} from '../../store/actionCreators'
+import { playSongAction, addPlaylistAction } from '../../store/actionCreators'
 import { useDispatch } from 'react-redux'
 
 
 const TopRanking = memo((props) => {
 
     const { info } = props
-    
     const dispatch = useDispatch()
 
     return (
@@ -32,7 +31,7 @@ const TopRanking = memo((props) => {
             </div>
             <div className='list'>
                 {
-                    info.tracks.slice(0, 10).map((item, index) =>
+                    info.tracks.map((item, index) =>
                         <div className='list-item' key={item.id}>
                             <div className='rank'>{index + 1} </div>
                             <div className='info'>
@@ -44,7 +43,7 @@ const TopRanking = memo((props) => {
                                     ></button>
                                     <button
                                         className='btn sprite_icon2 addto'
-                                        onClick={()=>{dispatch(addPlaylistAction(item.id))}}
+                                        onClick={() => { dispatch(addPlaylistAction(item.id)) }}
                                     ></button>
                                     <button className='btn sprite_02 favor'></button>
                                 </div>

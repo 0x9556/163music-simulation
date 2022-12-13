@@ -6,7 +6,7 @@ const initialState = {
     banners: [],
     hotRecommend: [],
     newAlbums: [],
-    toplist: {},
+    toplist: [],
     settleSinger: []
 }
 
@@ -14,28 +14,57 @@ const initialState = {
 export const getTopBannerAction = createAsyncThunk(
     "recommend/getBannerData",
     async () => {
-        return await getTopBanners()
+        const info = await getTopBanners()
+        return info.map(item => ({
+            encodeId: item.encodeId,
+            imageUrl: item.imageUrl,
+            typeTitle: item.typeTitle
+        }))
     }
 )
 
 export const getHotRecommendAction = createAsyncThunk(
     "recommend/getHotRecommend",
     async () => {
-        return await getHotRecommend()
+        const info = await getHotRecommend()
+        return info.map(item => ({
+            id: item.id,
+            name: item.name,
+            picUrl: item.picUrl,
+            playCount: item.playCount
+        }))
     }
 )
 
 export const getNewAlbumsAction = createAsyncThunk(
     "recommend/getNewAlbums",
     async () => {
-        return await getNewAlbums()
+        const info = await getNewAlbums()
+        return info.map(item => ({
+            name: item.name,
+            id: item.id,
+            type: item.type,
+            picUrl: item.picUrl,
+            artist: item.artist.name,
+            artistId: item.artist.id
+        }))
     }
 )
 
 export const getToplistAction = createAsyncThunk(
     "recommend/getToplist",
     async (id) => {
-        return await getToplist(id)
+        const info = await getToplist(id)
+        const tracks = info.tracks.slice(0, 10).map(item => ({
+            id: item.id,
+            name: item.name
+        }))
+        return {
+            id: info.id,
+            name: info.name,
+            coverImgUrl: info.coverImgUrl,
+            tracks: tracks
+        }
     }
 )
 
@@ -70,8 +99,7 @@ const discoverSlice = createSlice({
         })
 
         builder.addCase(getToplistAction.fulfilled, (state, action) => {
-            const id = action.meta.arg
-            state.toplist[id] = action.payload
+            state.toplist.push(action.payload)
         })
         builder.addCase(getSettleSingerAction.fulfilled, (state, action) => {
             state.settleSinger = action.payload

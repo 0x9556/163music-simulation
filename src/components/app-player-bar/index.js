@@ -88,7 +88,7 @@ const PlayerBar = memo(() => {
                     <div className='info'>
                         <div className='song'>
                             <span>{name}</span>
-                            <span className='singer-name'>{artist}</span>
+                            <span className='singer-name'>{artist.map(item=>item.name)}</span>
                         </div>
                         <div className='progress'>
                             <Slider
